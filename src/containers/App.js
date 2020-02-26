@@ -1,11 +1,11 @@
 import React, {Component}from 'react';
-import TdForm from './../components/tdform.js'
-import TdList from './../compenents/tdlist.js'
+import TodoForm from '../components/todoform.js'
+import TodoList from '../components/todolist.js'
 import './App.css';
 
-const todos = [{id: 0, text: 'Wash the car.', isComplete: false}];
+const todos = ['Wash the car.'];
 
-class TdApp extends Component {
+class TodoApp extends Component {
 
   constructor(props) {
     super(props);
@@ -16,6 +16,8 @@ class TdApp extends Component {
     }
 
     this.addTodo = this.addTodo.bind(this);
+    this.removeTodo = this.removeTodo.bind(this);
+    this.updateTodo = this.updateTodo.bind(this);
   }
 
   componentDidMount() {
@@ -23,26 +25,43 @@ class TdApp extends Component {
   }
   
   addTodo(todo) {
-    todo.id=this.state.counter;
-    todo.isComplete =false;
+    // todo.id=this.state.counter;
+    // todo.isComplete =false;
 
-    let todos = [this.state.todos];
+    let todos = [...this.state.todos];
     todos.push(todo);
 
-    this.setState((state, props) => ({
-      todos, counter: this.state.counter +1
-    }));
+    this.setState({todos: todo});
+    //((state, props) => ({
+    //   todos, counter: this.state.counter +1
+    // }));
   }
+
+  removeTodo(todo) {
+    let todos =[...this.state.todos];
+    const INDEX = todos.indexOf(todo);
+    todos.splice(INDEX, 1);
+    this.setState({todos: todos});
+
+  }
+
+  updateTodo(orig, updated) {
+    let todos = [...this.state.todos];
+    const INDEX = todos.indexOf(orig);
+    todos[INDEX] = updated;
+    this.setState({todos: todos})
+  }
+
 
   render(){
     return (
       <div>
         <h1>What do you need to do?</h1>
-        <TdForm addTodo={this.addTodo}/>
-        < TdList />
+        <TodoForm addTodo={this.addTodo}/>
+        < TodoList todos={this.state.todos} removeTodo={this.removeTodo} editTodo={this.editTodo} />
       </div>
     );
   }
 }
 
-export default TdApp;
+export default TodoApp;

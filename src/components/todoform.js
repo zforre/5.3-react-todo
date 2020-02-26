@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class TdForm extends Component {
+class TodoForm extends Component {
 
     constructor(props) {
         super(props);
@@ -18,14 +18,14 @@ class TdForm extends Component {
 
         handleSubmit(event) {
             event.preventDefault();
-            this.props.addTodo(this.state);
+            this.props.addTodo(this.state.text);
             this.setState({text: ''});
         }
 
     render() {
         return(
             <form onSubmit={this.handleSubmit} className='row no-gutters'>
-                <div className='form-group col-6'>
+                <div className='form-group col-12'>
                     <label htmlFor='text'>Add something to do.</label>
                     <input className="form-control" type="text" name="text" id="text" value={this.state.text} onChange={this.handleInput} />
                 </div>
@@ -35,4 +35,4 @@ class TdForm extends Component {
     }
 }
 
-export default TdForm
+export default TodoForm

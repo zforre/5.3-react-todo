@@ -21,10 +21,6 @@ ul {
   list-style: none;
 }
 
-.strikethrough {
-  text-decoration: none;
-}
-
 li.list-group-item {
   padding-left: 0;
   font-size: 1.4rem;
