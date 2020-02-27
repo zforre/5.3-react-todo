@@ -9,7 +9,7 @@ class TodoItem extends Component {
         }
 
         this.toggleEdit = this.toggleEdit.bind(this);
-        this.UpdateTodo = this.updateTodo.bind(this);
+        this.updateTodo = this.updateTodo.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -18,7 +18,7 @@ class TodoItem extends Component {
     }
 
     updateTodo() {
-        this.props.state.updateTodo(this.props.todo, this.state.text);
+        this.props.updateTodo(this.props.todo, this.state.text);
         this.toggleEdit();
     }
 

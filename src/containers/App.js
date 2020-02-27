@@ -31,7 +31,7 @@ class TodoApp extends Component {
     let todos = [...this.state.todos];
     todos.push(todo);
 
-    this.setState({todos: todo});
+    this.setState({todos: todos});
     //((state, props) => ({
     //   todos, counter: this.state.counter +1
     // }));
@@ -58,7 +58,7 @@ class TodoApp extends Component {
       <div>
         <h1>What do you need to do?</h1>
         <TodoForm addTodo={this.addTodo}/>
-        < TodoList todos={this.state.todos} removeTodo={this.removeTodo} editTodo={this.editTodo} />
+        <TodoList todos={this.state.todos} removeTodo={this.removeTodo} updateTodo={this.updateTodo} />
       </div>
     );
   }
